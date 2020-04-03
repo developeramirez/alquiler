@@ -21,19 +21,48 @@
             <a href="contacto.html">Contactanos</a>
         </div>
         <h1 class="titulo">Alquiler de Transporte</h1>
+        <!-- Formulario para generar el ticket de alquiler del Transporte -->
         <form action="" class="alquiler"><br>
             <label>Tipo de Transporte</label><br>
+            <!-- select que almacena los diferentes transportes al seleccionar uno mostrara el transporte solicitado  -->
             <select name="tipoT" id="tipoT">
                 <option disabled selected>--Elije una opcion--</option>
                 <option value="terrestre">Transporte Terrestre</option>
                 <option value="maritimo">Transporte Maritimo</option>
                 <option value="aereo">Transporte Aereo</option>
             </select><br><br>
-            <label>Transporte Terrestre</label><br>
-            <select name="tt" id="tt">
-                <option value="bmw">BMW JX7</option>
-                <option value="tanque">Tanque de Guerra</option>
-            </select><br><br>
+            <!-- select que muestra los transporte terrestres, inicialmente ocultos. -->
+            <div id="dtt">
+                <label>Transporte Terrestre</label><br>
+                <select name="tt" id="tt">
+                    <option disabled selected>--Elije una opcion--</option>
+                    <option value="bmw">BMW JX7</option>
+                    <option value="tanque">Tanque de Guerra</option>
+                    <option value="artillero">Carro Artillero C15</option>
+                </select><br><br>
+            </div>
+            <!-- select que muestra los transporte maritimos, inicialmente ocultos. -->
+            <div id="dtm">
+                <label>Transporte Maritimo</label><br>
+                <select name="tm" id="tm">
+                    <option disabled selected>--Elije una opcion--</option>
+                    <option value="submarino">SubMarino</option>
+                    <option value="hidroavion">Hidro Avion</option>
+                    <option value="lancha">Lancha</option>
+                </select><br><br>
+            </div>
+            <!-- select que muestra los transporte aereos, inicialmente ocultos. -->
+
+            <div id="dta">
+                <option disabled selected>--Elije una opcion--</option>
+                <label>Transporte Maritimo</label><br>
+                <select name="ta" id="ta">
+                    <option value="guerra">Avion de Guerra</option>
+                    <option value="comercial">Avion Comercial</option>
+                    <option value="deluxe">Avion Privado</option>
+                </select><br><br>
+            </div>
+            <!-- solicita la fecha de inicio y fin del alquiler de transporte el cual se divide en columnas -->
             <div class="row">
                 <div class="col-6">
                     <label>Fecha Inicio</label>
@@ -44,6 +73,8 @@
                     <input type="date">
                 </div>
             </div>
+            3 baleada con huevo y chorizo 2 frescos de naturales
+            <!-- seccion donde se muestran los datos que el usuario esta pidiendo -->
             <label>Marca</label><br>
             <input type="text" id="marca" value=""><br><br>
             <label>Motor</label><br>
@@ -51,15 +82,44 @@
             <label>Color</label><br>
             <input type="text" id="color" value=""><br><br>
             <label>Capacidad</label><br>
-            <input type="text" id="motor" value=""><br><br>
+            <input type="text" id="capacidad" value=""><br><br>
             <label>Precio</label><br>
-            <input type="text" id="motor" value=""><br><br>
+            <input type="text" id="precio" value=""><br><br>
         </form>
     </div>
     <div class="container">
 
     </div>
+    <!-- se instancia la libreria jquery -->
+    <script src="js/jquery.js"></script>
+    <script>
+        // se obtiene el id del div que contiene el select y se ocultan
+        $('#dtt').hide();
+        $('#dtm').hide();
+        $('#dta').hide();
+        // se obtiene el id del select el cual se asigna a una variable para comparar su resultado.
+        $('#tipoT').on('change', function() {
+            var tipotra = document.getElementById('tipoT').value;
+            // se compara el estado del select con valores predeterminados para mostrar el select
+            if (tipotra == 'terrestre') {
+                $('#dtm').hide();
+                $('#dta').hide();
+                $('#dtt').show();
+            } else if (tipotra == 'maritimo') {
+                $('#dta').hide();
+                $('#dtt').hide();
+                $('#dtm').show();
+            } else if (tipotra == 'aereo') {
+                $('#dtt').hide();
+                $('#dtm').hide();
+                $('#dta').show();
+            } else {
+                alert('No existe el transporte')
+            }
 
+        });
+    </script>
+    <script src="js/funciones.js"></script>
 </body>
 
 </html>
