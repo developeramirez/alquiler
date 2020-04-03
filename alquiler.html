@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- keywords, palabras clave, para facilitar al navegador -->
+    <meta name="keywords" content="Alquiler, Autos">
+    <link rel="stylesheet" href="css/estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+
+<body>
+    <!-- Container secciones del sitio -->
+    <div class="container">
+        <!-- topnav, menu de navegación -->
+        <div class="topnav">
+            <a href="index.html"><img src="images/logo.webp" alt="" width="40"></a>
+            <a href="index.html">Inicio</a>
+            <a href="alquiler.html">Alquiler</a>
+            <a href="contacto.html">Contactanos</a>
+        </div>
+        <h1 class="titulo">Alquiler de Transporte</h1>
+        <form action="" class="alquiler"><br>
+            <label>Tipo de Transporte</label><br>
+            <select name="tipoT" id="tipoT">
+                <option disabled selected>--Elije una opcion--</option>
+                <option value="terrestre">Transporte Terrestre</option>
+                <option value="maritimo">Transporte Maritimo</option>
+                <option value="aereo">Transporte Aereo</option>
+            </select><br><br>
+            <label>Transporte Terrestre</label><br>
+            <select name="tt" id="tt">
+                <option value="bmw">BMW JX7</option>
+                <option value="tanque">Tanque de Guerra</option>
+            </select><br><br>
+            <div class="row">
+                <div class="col-6">
+                    <label>Fecha Inicio</label>
+                    <input type="date">
+                </div>
+                <div class="col-6">
+                    <label>Fecha Fin</label>
+                    <input type="date">
+                </div>
+            </div>
+            <label>Marca</label><br>
+            <input type="text" id="marca" value=""><br><br>
+            <label>Motor</label><br>
+            <input type="text" id="motor" value=""><br><br>
+            <label>Color</label><br>
+            <input type="text" id="color" value=""><br><br>
+            <label>Capacidad</label><br>
+            <input type="text" id="motor" value=""><br><br>
+            <label>Precio</label><br>
+            <input type="text" id="motor" value=""><br><br>
+        </form>
+    </div>
+    <div class="container">
+
+    </div>
+
+</body>
+
+</html>

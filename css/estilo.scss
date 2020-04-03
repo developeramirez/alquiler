@@ -1,0 +1,41 @@
+$centrado: center;
+$altura: 100vh;
+@mixin wrap {
+    display: flex;
+    height: $altura;
+    margin: 50px auto;
+    justify-content: $centrado;
+}
+
+@mixin tarjeta {
+    width: 25vw;
+    height: $altura/4;
+    background: #f29720;
+}
+
+.container {
+    height: $altura;
+}
+
+h1,
+h3 {
+    text-align: $centrado;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrap {
+    @include wrap;
+}
+
+.tarjeta-wrap {
+    margin: 10px;
+}
+
+.tarjeta {
+    @include tarjeta;
+}
