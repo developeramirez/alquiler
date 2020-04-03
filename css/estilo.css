@@ -1,3 +1,5 @@
+/* clase principal la cual crea una seccion por medio de los vh */
+
 .container {
     height: 100vh;
     background-color: white;
@@ -9,10 +11,16 @@
     box-sizing: border-box;
 }
 
+
+/* estilo para la barra de navegacion */
+
 .topnav {
     overflow: hidden;
     background-color: #333;
 }
+
+
+/* estilo para los anclas del menu de navegacion */
 
 .topnav a {
     float: left;
@@ -24,10 +32,16 @@
     font-size: 17px;
 }
 
+
+/* funcion para cambiar valores cuando el curso pase sobre el menu */
+
 .topnav a:hover {
     background-color: #ddd;
     color: black;
 }
+
+
+/* estilo para las tarjetas */
 
 .wrap {
     display: flex;
@@ -36,11 +50,17 @@
     justify-content: center;
 }
 
+
+/* paquete que tiene las caras de la tarjeta, el cual gira la tarjeta */
+
 .tarjeta-wrap {
     margin: 10px;
     -webkit-perspective: 800;
     perspective: 800;
 }
+
+
+/* empaqueta la parte trase y delantera de la tarjeta */
 
 .tarjeta {
     width: 25vw;
@@ -54,6 +74,9 @@
     -webkit-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
 }
 
+
+/* estilo para la parte trasera y delantera de la tarjeta */
+
 .adelante,
 .atras {
     width: 100%;
@@ -64,6 +87,9 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+
+
+/* estilo para la parte de atras de la tarjeta, a cuanto queres que rode y el tipo de letra */
 
 .atras {
     transform: rotateY(180deg);
@@ -78,6 +104,9 @@
 .tarjeta-wrap:hover .tarjeta {
     transform: rotateY(180deg);
 }
+
+
+/* imagenes para las tarjetas */
 
 .card1 {
     background-image: url(../images/avion.jpeg);
@@ -101,6 +130,9 @@
 .card {
     text-align: center;
 }
+
+
+/* estilo para los botones  */
 
 .button-primary {
     margin-top: 10px;
@@ -128,10 +160,16 @@
     background-size: cover;
 }
 
+
+/* estilo para galeria en la pagina de aereo y maritimo */
+
 .galeria {
     text-align: center;
     margin-left: 13%;
 }
+
+
+/* estilo a los div que encierran la galeria en el cual se le asigna shadown apra sombreado y las extensiones moz y webkit para compatibilidad */
 
 div.gallery {
     text-align: center;
@@ -161,6 +199,9 @@ div.desc {
     text-align: center;
 }
 
+
+/* para responsividad de la pagina */
+
 @media screen and (max-width: 768px) {
     .galeria {
         margin-left: 10%;
@@ -180,6 +221,9 @@ div.desc {
     border-color: red;
     border: 4px solid black;
 }
+
+
+/* estructuro fila y columnas para una mejor responsividad */
 
 .row::after {
     content: "";
