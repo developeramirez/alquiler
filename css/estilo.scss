@@ -1,25 +1,91 @@
+$porcentajefull: 100%;
+$vhfull: 100vh;
+$rotar: rotateY(180deg);
 $centrado: center;
-$altura: 100vh;
-@mixin wrap {
-    display: flex;
-    height: $altura;
-    margin: 50px auto;
-    justify-content: $centrado;
-}
-
+// formato de tarjeta que encierra la parte de atras y delante de la tarjeta
 @mixin tarjeta {
     width: 25vw;
-    height: $altura/4;
+    height: $vhfull/2;
     background: #f29720;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: .7s ease;
+    box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
 }
+
+// mixin genera el formato 
+@mixin caras {
+    width: $porcentajefull;
+    height: $porcentajefull;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+// mixin genera estilo para la tarjeta de la parte de atras.
+//  para color se utiliza funcion prestablecida rgb
+@mixin atras {
+    transform: $rotar;
+    padding: 15px;
+    justify-content: $centrado;
+    text-align: $centrado;
+    align-items: $centrado;
+    color: rgb(11, 11, 10);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+@mixin nav {
+    overflow: hidden;
+    background-color: #333;
+    width: $porcentajefull;
+    height: $porcentajefull;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@mixin link {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: $centrado;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+// funcion para dividir el porcentaje total
+@function mitad($porcentajefull) {
+    @return $porcentajefull/2;
+}
+
+// funcion que divide los pixelajes como atributo se le asigna una variable
+@function pexe($num:20px) {
+    @return $num/2;
+}
+
+// funcion que se asigna una variable como atributo y devuelve el mismo valor
+@function pelele($pixel:15px) {
+    @return $pixel;
+}
+
+// se asigna color por medio de una funcion
+@function color($color:#ddd) {
+    @return $color;
+}
+
+
+/* clase principal la cual crea una seccion por medio de los vh */
 
 .container {
-    height: $altura;
-}
-
-h1,
-h3 {
-    text-align: $centrado;
+    height: $vhfull;
+    background-color: white;
 }
 
 * {
@@ -28,14 +94,398 @@ h3 {
     box-sizing: border-box;
 }
 
-.wrap {
-    @include wrap;
+
+/* estilo para la barra de navegacion */
+
+.topnav {
+    @include nav;
 }
 
-.tarjeta-wrap {
-    margin: 10px;
+
+/* estilo para los anclas del menu de navegacion */
+
+.topnav a {
+    @include link;
 }
+
+
+/* funcion para cambiar valores cuando el curso pase sobre el menu */
+
+.topnav a:hover {
+    background-color: color();
+    color: black;
+}
+
+
+/* estilo para las tarjetas */
+
+.wrap {
+    display: flex;
+    height: $vhfull;
+    margin: 50px auto;
+    justify-content: center;
+}
+
+
+/* paquete que tiene las caras de la tarjeta, el cual gira la tarjeta */
+
+.tarjeta-wrap {
+    margin: pexe();
+    -webkit-perspective: 800;
+    perspective: 800;
+}
+
+
+/* empaqueta la parte trase y delantera de la tarjeta */
 
 .tarjeta {
     @include tarjeta;
+}
+
+
+/* estilo para la parte trasera y delantera de la tarjeta */
+
+.adelante,
+.atras {
+    @include caras;
+}
+
+
+/* estilo para la parte de atras de la tarjeta, a cuanto queres que rode y el tipo de letra */
+
+.atras {
+    @include atras;
+}
+
+.tarjeta-wrap:hover .tarjeta {
+    transform: $rotar;
+}
+
+
+/* imagenes para las tarjetas */
+
+.card1 {
+    background-image: url(../images/avion.jpeg);
+    background-size: cover;
+}
+
+.card2 {
+    background-image: url(../images/barco.jpg);
+    background-size: cover;
+}
+
+.card3 {
+    background-image: url(../images/carro.jpeg);
+    background-size: cover;
+}
+
+.titulo {
+    text-align: $centrado;
+}
+
+.card {
+    text-align: $centrado;
+}
+
+
+/* estilo para los botones  */
+
+.button-primary {
+    margin-top: pexe();
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    border-radius: (pexe() *2);
+    padding: pexe();
+    font-size: (pexe()*2);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.bmw {
+    background-image: url(../images/bmw.jpeg);
+    background-size: cover;
+}
+
+.tanque {
+    background-image: url(../images/tranque.jpeg);
+    background-size: cover;
+}
+
+.artillero {
+    background-image: url(../images/artillero.jpg);
+    background-size: cover;
+}
+
+
+/* estilo para galeria en la pagina de aereo y maritimo */
+
+.galeria {
+    text-align: $centrado;
+    margin-left: 13%;
+}
+
+
+/* estilo a los div que encierran la galeria en el cual se le asigna shadown apra sombreado y las extensiones moz y webkit para compatibilidad */
+
+div.gallery {
+    text-align: $centrado;
+    margin: 20px;
+    float: left;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+}
+
+div.gallery:hover {
+    box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: 1 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+}
+
+div.gallery img {
+    width: $porcentajefull;
+    height: auto;
+    border-radius: pexe();
+}
+
+div.desc {
+    padding: pelele();
+    text-align: $centrado;
+}
+
+
+/* para responsividad de la pagina */
+
+@media screen and (max-width: 768px) {
+    .galeria {
+        margin-left: $porcentajefull/10;
+    }
+    div.gallery {
+        margin-left: $porcentajefull/10;
+        width: 30%;
+    }
+}
+
+.formulario {
+    margin-left: $porcentajefull/10;
+    margin-top: 2%;
+    margin-right: $porcentajefull/10;
+    padding: 20px;
+    border-radius: 10px;
+    border-color: red;
+    border: 4px solid black;
+}
+
+
+/* estructuro fila y columnas para una mejor responsividad */
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: mitad();
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: $porcentajefull;
+}
+
+.alquiler {
+    margin-left: $porcentajefull/4;
+    width: $porcentajefull/2;
+    padding: 10px;
+    box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.65);
+}
+
+select {
+    font-size: 14px;
+    background-color: white;
+    border-radius: 10px;
+    height: 5vh;
+}
+
+select>option {
+    padding: 10px;
+}
+
+input {
+    border-radius: 15px;
+    height: 25px;
+    width: $porcentajefull;
+}
+
+@media screen and (max-width: 1024px) {
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .galeria {
+        margin-left: 5%;
+    }
+}
+
+@media screen and(max-width: 768px) {
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-5 {
+        width: 41.66%;
+    }
+    .col-6 {
+        width: 50%;
+    }
+    .col-7 {
+        width: 58.33%;
+    }
+    .col-8 {
+        width: 66.66%;
+    }
+    .col-9 {
+        width: 75%;
+    }
+    .col-10 {
+        width: 83.33%;
+    }
+    .col-11 {
+        width: 91.66%;
+    }
+    .col-12 {
+        width: $porcentajefull;
+    }
+    .formulario {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-5 {
+        width: 41.66%;
+    }
+    .col-6 {
+        width: $porcentajefull/2;
+    }
+    .col-7 {
+        width: 58.33%;
+    }
+    .col-8 {
+        width: 66.66%;
+    }
+    .col-9 {
+        width: 75%;
+    }
+    .col-10 {
+        width: 83.33%;
+    }
+    .col-11 {
+        width: 91.66%;
+    }
+    .col-12 {
+        width: $porcentajefull;
+    }
+    .card {
+        width: $porcentajefull;
+    }
+    .tarjeta-wrap {
+        width: $porcentajefull;
+    }
+    .tarjeta h3 {
+        text-align: $centrado;
+        align-items: $centrado;
+        font-size: 12px;
+        width: 100vw;
+    }
+    .tarjeta p {
+        font-size: 10px;
+    }
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    .titulo {
+        font-size: 12px;
+    }
 }

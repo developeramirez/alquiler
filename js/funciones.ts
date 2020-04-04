@@ -39,7 +39,7 @@ class Transporte {
     marca:string;
     color:string;
     capacidad:number;
-    constructor(motor, marca, color, capacidad) {
+    constructor(motor:number, marca:string, color:string, capacidad:number) {
         this.motor = motor;
         this.marca = marca;
         this.color = color;
