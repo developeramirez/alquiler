@@ -23,7 +23,7 @@
         </div>
         <h1 class="titulo animated rotateInUpLeft">Alquiler de Transporte</h1>
         <!-- Formulario para generar el ticket de alquiler del Transporte -->
-        <form action="" class="alquiler"><br>
+        <form class="alquiler"><br>
             <label>Tipo de Transporte</label><br>
             <!-- select que almacena los diferentes transportes al seleccionar uno mostrara el transporte solicitado  -->
             <select name="tipoT" id="tipoT" class="animated shake">
@@ -85,10 +85,26 @@
             <input type="text" id="capacidad" value=""><br><br>
             <label>Precio</label><br>
             <input type="text" id="precio" value=""><br><br>
-        </form>
-    </div>
-    <div class="container">
 
+            <br>
+            <button class="button-primary" id="reservar">Reservar</button>
+        </form>
+
+    </div>
+    <div class="seccion">
+        <br><br><br><br><br><br><br><br><br><br>
+        <h1 style="text-align: center;">Autos Rentados</h1><br>
+        <table id="fila">
+            <tr>
+                <th>Marca</th>
+                <th>Motor</th>
+                <th>Color</th>
+                <th>Capacidad</th>
+                <th>Precio</th>
+                <th>Tipo Transporte</th>
+            </tr>
+
+        </table>
     </div>
     <!-- se instancia la libreria jquery -->
     <script src="js/jquery.js"></script>
@@ -118,6 +134,29 @@
             }
 
         });
+        $(document).ready(function(event) {
+            $('#reservar').click(function(event) {
+                event.preventDefault();
+                reservar();
+            })
+        })
+
+        function reservar() {
+            event.preventDefault();
+            var marca = $('#marca').val();
+            var motor = $('#motor').val();
+            var color = $('#color').val();
+            var capacidad = $('#capacidad').val();
+            var precio = $('#precio').val();
+            var tipo = $('#tipoT').val();
+
+            var imprimir = "<tr><td>" + marca + "</td>" +
+                "<td>" + motor + "</td>" +
+                "<td>" + color + "</td>" +
+                "<td>" + capacidad + "</td>" +
+                "<td>" + precio + "</td><td>" + tipo + "</td></tr>";
+            $('#fila').append(imprimir);
+        }
     </script>
     <script src="js/funciones.js"></script>
 </body>
