@@ -60,6 +60,9 @@ $centrado: center;
     font-size: 17px;
 }
 
+
+/* Existen */
+
 // funcion para dividir el porcentaje total
 @function mitad($porcentajefull) {
     @return $porcentajefull/2;
